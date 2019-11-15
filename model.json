@@ -1,0 +1,113 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "loterias y apuestas",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "Cancela"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "Ayuda",
+                        "Necesito ayuda"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "Gracias"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureGameNameIntent",
+                    "slots": [
+                        {
+                            "name": "gameName",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{gameName}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Dime el último resultado de la {gameName}",
+                        "La {gameName}",
+                        "Quiero saber el resultado de la {gameName}",
+                        "Dime la combinación ganadora de la {gameName}",
+                        "Dime la combinación ganadora del {gameName}",
+                        "Quiero saber el resultado del {gameName}",
+                        "El {gameName}",
+                        "Dime el último resultado del {gameName}"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CaptureGameNameIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "gameName",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.942727636201.1362657998078"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInSet",
+                                    "prompt": "Slot.Validation.942727636201.1362657998078.478673549323",
+                                    "values": [
+                                        "euromillón",
+                                        "primitiva",
+                                        "quiniela",
+                                        "quíntuple plus",
+                                        "lototurf",
+                                        "bonoloto",
+                                        "gordo",
+                                        "lotería nacional",
+                                        "quinigol"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.942727636201.1362657998078",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿De qué juego quieres conocer el resultado?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.942727636201.1362657998078.478673549323",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Puedo decirte el resultado del euromillón, la primitiva, el bonoloto, el gordo, la lotería nacional, la quiniela, el lototurf, el quinigol y el quíntuple plus"
+                    }
+                ]
+            }
+        ]
+    }
+}
